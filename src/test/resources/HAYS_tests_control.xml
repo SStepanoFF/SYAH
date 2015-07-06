@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="HAYS Tests" verbose="1"  >
+    <test name="User Registration" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="5"/>
+        <parameter name="answerQ9_Q10_Q11" value="true" />
+        <classes>
+             <class name="GetContactFileFromKSTests">
+                 <methods>
+                    <include name="getContactExcelFileTest"/>
+                </methods>
+            </class>
+            <class name="FillSurveyTest">
+                <methods>
+                    <include name="fillSurvey"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
+

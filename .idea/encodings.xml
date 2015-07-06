@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/framework/CommonOperations.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/framework/DriverOperations.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/framework/utils/DataBase.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/framework/utils/HTTP_Connection.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/framework/utils/Loader.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/framework/utils/Screenshot.java" charset="UTF-8" />
+  </component>
+</project>
