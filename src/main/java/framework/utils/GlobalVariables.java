@@ -4,7 +4,7 @@ public class GlobalVariables {
 
     public static int GlobalTimeOut=Integer.parseInt(Loader.loadProperty("timeout"));
     public static String DownloadExcelFilePath =System.getProperty("user.home") + "\\Downloads\\ContactsOfGroup-Excel.xls";
-    public static String AutofillExcelFilePath =System.getProperty("user.dir")+"\\src\\main\\resources\\HAYSAutofill.csv";
+    public static String AutofillCSVFilePath =System.getProperty("user.dir")+"\\src\\main\\resources\\HAYSAutofill.csv";
 
     public static String PortalUrl= Loader.loadProperty("portalUrl");
     public static String getPortalLogin(){
@@ -41,12 +41,19 @@ public class GlobalVariables {
         Loader.updateProperty("respondentID", respondID);
     }
 
-    private static String AlertType;
     public static String getAlertType() {
-        return AlertType;
+        return Loader.loadProperty("alertType").toLowerCase();
     }
     public static void setAlertType(String alertType) {
-        AlertType = alertType;
+        Loader.updateProperty("alertType",alertType);
     }
+
+    public static String getAlertStatus() {
+        return Loader.loadProperty("alertStatus");
+    }
+    public static void setAlertStatus(String alertStatus) {
+        Loader.updateProperty("alertStatus",alertStatus);
+    }
+
 
 }

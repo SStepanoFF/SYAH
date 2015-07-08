@@ -44,6 +44,8 @@ public class ExcelOperations {
             ioe.printStackTrace();
             throw new RuntimeException("Error with Excel file!");
         }
-        return cell;
+        if (cell==null){
+            throw new RuntimeException("There is no free Survey link!");
+        }else return cell;
     }
 }

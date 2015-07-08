@@ -31,7 +31,7 @@ public class AlertTabPage extends PortalMainPage{
 
     public AlertTabPage(WebDriver driver) {
         super(driver);
-        alertID= DataBase.executeSQLQuery("SELECT ALERT_ID FROM ALERT JOIN RESPONSE ON ALERT.RESPONSE_ID=RESPONSE.RESPONSE_ID WHERE  KS_RESPONDENT_ID="+ GlobalVariables.getRespondentID(), "ALERT_ID");
+        alertID= DataBase.executeSQLQuery("SELECT ALERT_ID FROM ALERT JOIN RESPONSE ON ALERT.RESPONSE_ID=RESPONSE.RESPONSE_ID WHERE  KS_RESPONDENT_ID= "+ GlobalVariables.getRespondentID(), "ALERT_ID");
         waitForLoadingDisappear();
         waitForAJAXfinish();
 
@@ -55,28 +55,28 @@ public class AlertTabPage extends PortalMainPage{
     private WebElement filterSearchBtn;
 
     public String getName(){
-        return driver.findElement(By.xpath(nameXpath)).getAttribute("title");
+        return driver.findElement(By.xpath(nameXpath)).getAttribute("title").toLowerCase();
     }
     public String getrefNmb(){
-        return driver.findElement(By.xpath(refNmbXpath)).getAttribute("title");
+        return driver.findElement(By.xpath(refNmbXpath)).getAttribute("title").toLowerCase();
     }
     public String getOffice(){
-        return driver.findElement(By.xpath(officeXpath)).getAttribute("title");
+        return driver.findElement(By.xpath(officeXpath)).getAttribute("title").toLowerCase();
     }
     public String getPersonType(){
-        return driver.findElement(By.xpath(personTypeXpath)).getAttribute("title");
+        return driver.findElement(By.xpath(personTypeXpath)).getAttribute("title").toLowerCase();
     }
     public String getConsultant(){
-        return driver.findElement(By.xpath(consultantXpath)).getAttribute("title");
+        return driver.findElement(By.xpath(consultantXpath)).getAttribute("title").toLowerCase();
     }
     public String getSurveyComplitionDate(){
         return driver.findElement(By.xpath(surveyCompletionDateXpath)).getAttribute("title");
     }
     public String getAlertType(){
-        return driver.findElement(By.xpath(alertTypeXpath)).getAttribute("title");
+        return driver.findElement(By.xpath(alertTypeXpath)).getAttribute("title").toLowerCase();
     }
     public String getStatus(){
-        return driver.findElement(By.xpath(statusXpath)).getAttribute("title");
+        return driver.findElement(By.xpath(statusXpath)).getAttribute("title").toLowerCase();
     }
     public String getAlertDueDate(){
         return driver.findElement(By.xpath(alertDueDateXpath)).getAttribute("title");

@@ -2,6 +2,7 @@ package framework.utils;
 
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 
 public class DataBase {
     private static Connection conn;
@@ -35,15 +36,20 @@ public class DataBase {
             Loader.logWritter("ERROR! Can't connect to DB");
         }
 
-
-        String result = "Can't find userID!";
+        String result = "Can't_find";
         try {
             statement = conn.createStatement();//Готовим запрос
             resultSets = statement.executeQuery(query);
             while (resultSets.next()) {
-                result = resultSets.getString(columnName);
+                if (query.toLowerCase().contains("date")) {
+                    SimpleDateFormat dateFormat = new SimpleDateFormat(Loader.loadProperty("dateFormat"));
+                    Timestamp date = resultSets.getTimestamp(columnName);
+                    result=dateFormat.format(date);
+                }else result=resultSets.getString(columnName);
             }
-            return result;
+            if (result.equals("Can't_find")){
+                throw new RuntimeException("ERROR! Can't find in DB!");
+            } else return result;
         } catch (Exception e) {
             e.printStackTrace();
             return result;
