@@ -47,7 +47,7 @@ public class WebDriverFactory {
     // 1. WebDriver instance is not created yet
     if (driver == null) {
         driver = newWebDriver(hub, capabilities);
-        driver.manage().window().setSize(new Dimension(1500,800));
+        driver.manage().window().setSize(new Dimension(1200,900));
 //        driver.navigate().to(Loader.loadProperty("testUrl"));
         return driver;
     }
@@ -137,7 +137,7 @@ public class WebDriverFactory {
     throw new Error("Unrecognized browser type: " + browserType);
   }
 
-    // dissmissDriver after test
+    // dissmissDriver after KS_API_FormResultManagementService
 //  static {
 //    Runtime.getRuntime().addShutdownHook(new Thread() {
 //      public void run() {

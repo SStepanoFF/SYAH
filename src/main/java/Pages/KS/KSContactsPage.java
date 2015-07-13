@@ -20,14 +20,17 @@ public class KSContactsPage extends KSMainPage {
     private WebElement importBtn;
     @FindBy (css = "button[name='newSync']")
     private WebElement setupNewImportBtn;
+    @FindBy (css = "button[name='editSync']")
+    private WebElement editExistedContactManager;
 
     @FindBy (css = "label[for='urlTypeL']")
     private WebElement youCompSelectionRadioBtn;
 
+
     private void selectContactsGroup(){
         driver.switchTo().frame(driver.findElement(By.id("treeViewId")));
         driver.findElement(By.xpath("//*[contains(text(),'testContacts')]")).click();
-        waitForAJAXfinish();
+        waitForAJAXfinished();
         waitForLoadingDisapp();
         driver.switchTo().defaultContent();
     }
@@ -36,6 +39,7 @@ public class KSContactsPage extends KSMainPage {
         selectContactsGroup();
         importBtn.click();
         waitForLoadingDisapp();
+        editExistedContactManager.click();
         youCompSelectionRadioBtn.click();
     }
 }

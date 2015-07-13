@@ -1,5 +1,6 @@
 package Pages.KS;
 
+import Pages.Surveys.SurveyPage;
 import framework.DriverOperations;
 import framework.utils.GlobalVariables;
 import org.openqa.selenium.WebDriver;
@@ -25,16 +26,30 @@ public class KSMainPage extends DriverOperations {
     private WebElement manageResponsLink;
     @FindBy (css = "a[title='Contacts']")
     private WebElement contactsTabBtn;
+    @FindBy (css = "a[title='Complete Respondents']")
+    private WebElement complitedResponceLinkBtn;
     @FindBy (id = "LayerLoad")
     public WebElement loadingSymbl;
+    @FindBy (css = "a[name='LABEL_SURVEY']")
+    private WebElement surveyTabBtn;
 
     public KSManageResponsePage openManageResponsePage(){
         searchField.sendKeys(GlobalVariables.KSSurveyID);
         searchBtn.click();
-        waitForAJAXfinish();
+        waitForAJAXfinished();
         manageResponsLink.click();
-        waitForAJAXfinish();
+        waitForAJAXfinished();
         return new KSManageResponsePage(driver);
+    }
+
+    public SurveyPage openComplitedSurveys(){
+        surveyTabBtn.click();
+        waitForAJAXfinished();
+        searchField.sendKeys(GlobalVariables.KSSurveyID);
+        searchBtn.click();
+        waitForAJAXfinished();
+        complitedResponceLinkBtn.click();
+        return new SurveyPage(driver);
     }
 
     public KSContactsPage openContactsPage(){

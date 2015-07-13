@@ -14,7 +14,6 @@ public class LoginPortalPage extends DriverOperations {
 
     public LoginPortalPage(WebDriver driver) {
         super(driver);
-        driver.navigate().to(GlobalVariables.PortalUrl);
         wait.until(ExpectedConditions.visibilityOf(emailField));
     }
 

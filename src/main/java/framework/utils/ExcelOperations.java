@@ -25,9 +25,9 @@ public class ExcelOperations {
             HSSFRow row;
 
             int rows = sheet.getPhysicalNumberOfRows();
-            for(int r = 1; r < rows; r++) {
+            for(int r = 0; r < rows; r++) {
                 row = sheet.getRow(r);
-                if(row != null) {
+//                if(row != null) {
                     if (row.getCell(8)==null){
                         cell = row.getCell(7).toString();
                         GlobalVariables.setSurveyID(row.getCell(0).toString());
@@ -38,7 +38,7 @@ public class ExcelOperations {
                         fileOut.close();
                         break;
                     }
-                }
+//                }
             }
         } catch(IOException ioe) {
             ioe.printStackTrace();

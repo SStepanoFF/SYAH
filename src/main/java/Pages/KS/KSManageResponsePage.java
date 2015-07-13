@@ -27,7 +27,7 @@ public class KSManageResponsePage extends KSMainPage {
     public void exportContactsToExcel(){
         exportBtn.click();
         exportToExcelBtn.click();
-        waitForAJAXfinish();
+        waitForAJAXfinished();
         File file = new File(System.getProperty("user.home") + "\\Downloads\\ContactsOfGroup-Excel.xls");
         while (!file.exists()) {
             try {

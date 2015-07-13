@@ -23,7 +23,7 @@ public class ChromeWebDriver {
         chromePrefs.put("download.default_directory", System.getProperty("user.dir") + "\\XLSFile\\");
         HashMap<String, Object> chromeOptionsMap = new HashMap<String, Object>();
         options.setExperimentalOption("prefs", chromePrefs);
-        options.addArguments("--test-type");
+        options.addArguments("--KS_API_FormResultManagementService-type");
         DesiredCapabilities cap = DesiredCapabilities.chrome();
         cap.setCapability(ChromeOptions.CAPABILITY, chromeOptionsMap);
         cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);

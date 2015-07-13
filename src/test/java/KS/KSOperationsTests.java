@@ -1,7 +1,10 @@
+package KS;
+
 import Pages.KS.KSLoginPage;
 import Pages.KS.KSMainPage;
 import Pages.KS.KSManageResponsePage;
 import framework.webDriver.Driver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import setup.BaseTest;
@@ -9,7 +12,7 @@ import setup.BaseTest;
 /**
  * Created by sergii.stepanov on 12/06/2015.
  */
-public class GetContactFileFromKSTests extends BaseTest {
+public class KSOperationsTests extends BaseTest {
 
     private KSLoginPage ksLoginPage;
     private KSMainPage ksMainPage;
@@ -18,19 +21,21 @@ public class GetContactFileFromKSTests extends BaseTest {
     @BeforeClass
     public void setup(){
         driver= Driver.getInstance();
-        ksLoginPage=new KSLoginPage(driver);
     }
 
-    @Test
-    private void getContactExcelFileTest(){
+    @Test (priority = 1)
+    private void ksLoginTest(){
+        ksLoginPage=new KSLoginPage(driver);
         ksMainPage=ksLoginPage.loginKS();
+    }
+
+    @Test (priority = 2)
+    private void getContactExcelFileTest(){
         ksManageResponsePage=ksMainPage.openManageResponsePage();
         ksManageResponsePage.exportContactsToExcel();
     }
 
 //    @Test
-//    private void getSurvURLfromExcelFile(){
-//        GlobalVariables.setSurveyUrl(ExcelOperations.getLinkFromExcelFile());
-//        System.out.println("LINK: "+GlobalVariables.getSurveyUrl());
-//    }
+//    private void reportVerificationTest(){}
+
 }

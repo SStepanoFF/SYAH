@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 /**
  * Created by sergii.stepanov on 02/07/2015.
  */
@@ -31,9 +33,10 @@ public class AlertTabPage extends PortalMainPage{
 
     public AlertTabPage(WebDriver driver) {
         super(driver);
+        driver.navigate().refresh();
         alertID= DataBase.executeSQLQuery("SELECT ALERT_ID FROM ALERT JOIN RESPONSE ON ALERT.RESPONSE_ID=RESPONSE.RESPONSE_ID WHERE  KS_RESPONDENT_ID= "+ GlobalVariables.getRespondentID(), "ALERT_ID");
         waitForLoadingDisappear();
-        waitForAJAXfinish();
+        waitForAJAXfinished();
 
         nameXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_name']";
         refNmbXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_refNumber']";
@@ -53,6 +56,11 @@ public class AlertTabPage extends PortalMainPage{
     private WebElement filterAlertStatus;
     @FindBy (xpath = "//button[contains(text(),'Search')]")
     private WebElement filterSearchBtn;
+
+    @FindBy (xpath = "//table[@class='table ']//td[1]")
+    private List<WebElement> clientSatisfactList;
+    @FindBy (xpath = "//table[@class='table ']//td[2]")
+    private List<WebElement> candidateSatisfactList;
 
     public String getName(){
         return driver.findElement(By.xpath(nameXpath)).getAttribute("title").toLowerCase();
@@ -86,10 +94,11 @@ public class AlertTabPage extends PortalMainPage{
     }
 
     public void searchAlert(){
+        filterNameField.clear();
         filterNameField.sendKeys(CSVOperations.getCellFromAutofillCSVFile(3));
         new Select(filterAlertStatus).selectByValue("");
         filterSearchBtn.click();
         waitForLoadingDisappear();
-        waitForAJAXfinish();
+        waitForAJAXfinished();
     }
 }

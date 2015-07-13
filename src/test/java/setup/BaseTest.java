@@ -36,39 +36,6 @@ public class BaseTest {
         }
    }
 
-    protected void createNewTab(WebDriver driver, String url) {
-        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
-        driver.navigate().to(url);
-    }
-//
-//    protected void switchTab(WebDriver driver) {
-//        try{
-//            driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"\t");
-//            ArrayList tabs = new ArrayList(driver.getWindowHandles());
-//            driver.switchTo().window(tabs.get(0).toString());  //driver.switchTo().defaultContent();
-//        }catch (Exception e){
-//            Loader.logWritter("ERROR! Couldn't switch tab");
-//        }
-//    }
-//
-protected void createNewWindow(WebDriver driver, String url) {
-    try {
-        ((JavascriptExecutor) driver).executeScript("window.open(arguments[0])");
-        switchWindow(driver, 1);
-        driver.navigate().to(url);
-    } catch (Exception e) {
-        Loader.logWritter("ERROR! Couldn't load second page");
-    }
-}
-//
-protected void switchWindow(WebDriver driver, int number) {
-    try {
-        driver.switchTo().window(driver.getWindowHandles().toArray()[number].toString());
-    } catch (Exception e) {
-        Loader.logWritter("ERROR! Couldn't switch tab");
-    }
-}
-
     @AfterMethod
     public void takeScreenShot(ITestResult result) throws IOException {
         if (result.getStatus() == ITestResult.FAILURE || result.getStatus() == ITestResult.SKIP) {     //условие делать скриншот если тест FAIL
@@ -82,5 +49,32 @@ protected void switchWindow(WebDriver driver, int number) {
             File saved = new File(System.getProperty("user.dir") + "\\Screenshots\\", resultDateTime + "_" + result.getTestContext().getCurrentXmlTest().getName() + "_" + result.getName() + ".png");
             FileUtils.copyFile(f, saved);
         }
+    }
+
+    @DataProvider(name = "surveyAnswerDataProvider")
+    public Object[][] provideData(Method method) {
+        Object[][] result = new Object[][]{
+            //APAC------
+                {8, true},
+                {8, false},
+                {8, true},
+                {8, false},
+                {8, true},
+                {8, false},
+                {8, true},
+                {8, false},
+             //----------
+                {2, true},
+                {2, false},
+                {2, true},
+                {2, false},
+                {6, true},
+                {6, false},
+                {8, true},
+                {8, false},
+                {8, true},
+                {8, false}
+        };
+        return result;
     }
 }

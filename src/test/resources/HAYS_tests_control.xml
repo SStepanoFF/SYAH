@@ -1,18 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="HAYS Tests" verbose="1"  >
-    <test name="User Registration" preserve-order="true" enabled="true">
-        <parameter name="answer_Q6" value="5"/>
+    <test name="KS make setup" preserve-order="true" enabled="true">
+        <classes>
+            <class name="KS.KSOperationsTests"/>
+        </classes>
+    </test>
+    <test name="Survey and Portal Alert verification" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="8"/>
         <parameter name="answerQ9_Q10_Q11" value="true" />
         <classes>
-             <class name="GetContactFileFromKSTests">
-                 <methods>
-                    <include name="getContactExcelFileTest"/>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
+                    <include name="loginPortalTest"/>
+                    <include name="openAlertTab"/>
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
                 </methods>
             </class>
-            <class name="FillSurveyTest">
+        </classes>
+    </test>
+    <test name="Fill survey2" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="8"/>
+        <parameter name="answerQ9_Q10_Q11" value="false" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
                 <methods>
-                    <include name="fillSurvey"/>
+                    <!--<include name="loginPortalTest"/>-->
+                    <!--<include name="openAlertTab"/>-->
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
                 </methods>
             </class>
         </classes>

@@ -24,7 +24,7 @@ public class CSVOperations {
             File csvFile = new File(GlobalVariables.AutofillCSVFilePath);
             BufferedReader bufferedReader = null;
             String line = "";
-            String cvsSplitBy = ",";
+            String cvsSplitBy = "\",\"";
             try {
                 bufferedReader = new BufferedReader(new FileReader(csvFile));
                 while ((line = bufferedReader.readLine()) != null) {
@@ -98,6 +98,7 @@ public class CSVOperations {
                 writer.flush();
                 writer.close();
                 reader.close();
+                System.out.println("CSV AutofillFile was created!");
             } catch (IOException e) {
                 e.printStackTrace();
             }

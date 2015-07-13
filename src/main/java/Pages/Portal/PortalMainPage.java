@@ -14,7 +14,7 @@ public class PortalMainPage extends DriverOperations {
 
     public PortalMainPage(WebDriver driver) {
         super(driver);
-        wait.until(ExpectedConditions.visibilityOf(alertsTab));
+         wait.until(ExpectedConditions.visibilityOf(alertsTab));
     }
 
     @FindBy (css = "a[href='/Alerts.action']")

@@ -52,7 +52,12 @@ public class DriverOperations extends CommonOperations {
         webElement.click();
     }
 
-    public void switchTab(WebDriver driver) {
+    public static void createNewTab(WebDriver driver, String url) {
+        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
+        driver.navigate().to(url);
+    }
+
+    public static void switchTab(WebDriver driver) {
         try{
             driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"\t");
             ArrayList tabs = new ArrayList(driver.getWindowHandles());
@@ -62,7 +67,17 @@ public class DriverOperations extends CommonOperations {
         }
     }
 
-    public void switchWindow(WebDriver driver, int number) {
+    public static void createNewWindow(WebDriver driver, String url) {
+        try {
+            ((JavascriptExecutor) driver).executeScript("window.open(arguments[0])");
+            switchWindow(driver, 1);
+            driver.navigate().to(url);
+        } catch (Exception e) {
+            Loader.logWritter("ERROR! Couldn't load second page");
+        }
+    }
+
+    public static void switchWindow(WebDriver driver, int number) {
         try {
             driver.switchTo().window(driver.getWindowHandles().toArray()[number].toString());
         } catch (Exception e) {
@@ -86,7 +101,7 @@ public class DriverOperations extends CommonOperations {
 //    }
 
     public void mouseMoveRobot(WebElement element) {
-        waitForAJAXfinish();
+        waitForAJAXfinished();
         Point coord = element.getLocation();
         Point browserCoord = driver.manage().window().getPosition();
         try {
@@ -125,7 +140,7 @@ public class DriverOperations extends CommonOperations {
         });
     }
 
-    public void waitForAJAXfinish() {
+    public void waitForAJAXfinished() {
         wait.until(new ExpectedCondition<Boolean>() {
             @Override
             public Boolean apply(org.openqa.selenium.WebDriver driver) {

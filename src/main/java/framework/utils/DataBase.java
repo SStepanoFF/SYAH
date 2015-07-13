@@ -110,8 +110,8 @@ public class DataBase {
                 }
                 if (result != 0) userNmb++;
             }
-            Loader.updateProperty("userReg", "autoTestUserReg" + userNmb + "@test.com");
-            return "autoTestUserReg" + userNmb + "@test.com";
+            Loader.updateProperty("userReg", "autoTestUserReg" + userNmb + "@KS_API_FormResultManagementService.com");
+            return "autoTestUserReg" + userNmb + "@KS_API_FormResultManagementService.com";
         } catch (Exception e) {
             e.printStackTrace();
             return null;
