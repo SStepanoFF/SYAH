@@ -149,4 +149,24 @@ public class DriverOperations extends CommonOperations {
         });
     }
 
+    public void waitForAlertCreatedInDB(){
+        String res="";
+        int time=0;
+        while (time<20){
+            try {
+                res=DataBase.executeSQLQuery("SELECT ALERT_ID FROM ALERT JOIN RESPONSE ON ALERT.RESPONSE_ID=RESPONSE.RESPONSE_ID WHERE  KS_RESPONDENT_ID= " + GlobalVariables.getRespondentID(), "ALERT_ID");
+                break;
+            }catch (RuntimeException ex){
+                try {
+                    Thread.sleep(3000);
+                    time ++;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        if (time>=60){
+            throw  new RuntimeException("ERROR! Alert was not created in DB!");
+        } else GlobalVariables.setAlertID(res);
+    }
 }
