@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="HAYS Tests" verbose="1"  >
+
+    <!--1. Crate copy of survey (Change DataSender url (plugin)). Set SID at configure file-->
+    <!--2. Create (CommonOperationTest)  and autofill contacts file.-->
+    <!--3. Run test suite.-->
+
     <test name="KS make setup" preserve-order="true" enabled="true">
         <classes>
             <class name="KS.KSOperationsTests"/>
         </classes>
     </test>
-    <test name="Survey and Portal Alert verification" preserve-order="true" enabled="true">
+    <test name="APAC Japan Contact" preserve-order="true" enabled="true">
         <parameter name="answer_Q6" value="8"/>
         <parameter name="answerQ9_Q10_Q11" value="true" />
         <classes>
@@ -29,15 +34,349 @@
             </class>
         </classes>
     </test>
-    <test name="Fill survey2" preserve-order="true" enabled="true">
-        <parameter name="answer_Q6" value="8"/>
+    <test name="APAC Chinese Contact" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="7"/>
         <parameter name="answerQ9_Q10_Q11" value="false" />
         <classes>
             <class name="FillSurveyTest"/>
             <class name="PortalTests.AlertTableTests">
                 <methods>
-                    <!--<include name="loginPortalTest"/>-->
-                    <!--<include name="openAlertTab"/>-->
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="APAC Eng_Australia Contact" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="3"/>
+        <parameter name="answerQ9_Q10_Q11" value="false" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="APAC Eng_Nz Contact" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="5"/>
+        <parameter name="answerQ9_Q10_Q11" value="true" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="APAC Japan Candidate" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="8"/>
+        <parameter name="answerQ9_Q10_Q11" value="true" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="APAC Chinese Candidate" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="7"/>
+        <parameter name="answerQ9_Q10_Q11" value="false" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="APAC Eng_Australia Candidate" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="3"/>
+        <parameter name="answerQ9_Q10_Q11" value="false" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="APAC Eng_Nz Candidate" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="5"/>
+        <parameter name="answerQ9_Q10_Q11" value="true" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Eng_UK Contact Q6 smaller than 6, answer" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="4"/>
+        <parameter name="answerQ9_Q10_Q11" value="true" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Eng_UK Contact Q6 smaller than6, NOT answer" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="2"/>
+        <parameter name="answerQ9_Q10_Q11" value="false" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Eng_UK Contact Q6 bigger than 6, answer" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="7"/>
+        <parameter name="answerQ9_Q10_Q11" value="true" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Eng_UK Contact Q6 bigger than 6, NOT answer" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="9"/>
+        <parameter name="answerQ9_Q10_Q11" value="false" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Eng_UK Contact Q6 equals 6, answer" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="6"/>
+        <parameter name="answerQ9_Q10_Q11" value="true" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Eng_UK Candidate Q6 equals than 6, NOT answer" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="6"/>
+        <parameter name="answerQ9_Q10_Q11" value="false" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Eng_UK Candidate Q6 smaller than 6, answer" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="2"/>
+        <parameter name="answerQ9_Q10_Q11" value="true" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Eng_UK Candidate Q6 smaller than6, NOT answer" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="3"/>
+        <parameter name="answerQ9_Q10_Q11" value="false" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Eng_UK Candidate Q6 bigger than 6, answer" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="8"/>
+        <parameter name="answerQ9_Q10_Q11" value="true" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
+                    <include name="nameVerificationTest"/>
+                    <include name="refNmbVerificationTest"/>
+                    <include name="officeVerificationTest"/>
+                    <include name="personTypeVerificationTest"/>
+                    <include name="consultantVerificationTest"/>
+                    <include name="surveyCompleteVerificationTest"/>
+                    <include name="alertTypeVerificationTest"/>
+                    <include name="statusVerificationTest"/>
+                    <include name="alertDueDateVerificationTest"/>
+                    <include name="alertModifiedDateVerificationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Eng_UK Candidate Q6 bigger than 6, NOT answer" preserve-order="true" enabled="true">
+        <parameter name="answer_Q6" value="9"/>
+        <parameter name="answerQ9_Q10_Q11" value="false" />
+        <classes>
+            <class name="FillSurveyTest"/>
+            <class name="PortalTests.AlertTableTests">
+                <methods>
                     <include name="nameVerificationTest"/>
                     <include name="refNmbVerificationTest"/>
                     <include name="officeVerificationTest"/>
