@@ -34,27 +34,16 @@ public class AlertTabPage extends PortalMainPage{
     public AlertTabPage(WebDriver driver) {
         super(driver);
         driver.navigate().refresh();
-        alertID= DataBase.executeSQLQuery("SELECT ALERT_ID FROM ALERT JOIN RESPONSE ON ALERT.RESPONSE_ID=RESPONSE.RESPONSE_ID WHERE  KS_RESPONDENT_ID= "+ GlobalVariables.getRespondentID(), "ALERT_ID");
+        alertID= GlobalVariables.getAlertID();
         waitForLoadingDisappear();
         waitForAJAXfinished();
-
-        nameXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_name']";
-        refNmbXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_refNumber']";
-        officeXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_assignedTo.officeName']";
-        personTypeXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_personTypeKeysurvey']";
-        consultantXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_consultant']";
-        surveyCompletionDateXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_surveyCompletionDate']";
-        alertTypeXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_alertType']";
-        statusXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_status']";
-        alertDueDateXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_alertDueDate']";
-        lastModifyDateXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_lastModifyDate']";
     }
 
     @FindBy (id = "name")
     private WebElement filterNameField;
     @FindBy (id = "alertStatus")
     private WebElement filterAlertStatus;
-    @FindBy (xpath = "//button[contains(text(),'Search')]")
+    @FindBy (css = "button[onclick='gridReload();']")
     private WebElement filterSearchBtn;
 
     @FindBy (xpath = "//table[@class='table ']//td[1]")
@@ -63,37 +52,49 @@ public class AlertTabPage extends PortalMainPage{
     private List<WebElement> candidateSatisfactList;
 
     public String getName(){
+        nameXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_name']";
         return driver.findElement(By.xpath(nameXpath)).getAttribute("title").toLowerCase();
     }
     public String getrefNmb(){
+        refNmbXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_refNumber']";
         return driver.findElement(By.xpath(refNmbXpath)).getAttribute("title").toLowerCase();
     }
     public String getOffice(){
+        officeXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_assignedTo.officeName']";
         return driver.findElement(By.xpath(officeXpath)).getAttribute("title").toLowerCase();
     }
     public String getPersonType(){
+        personTypeXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_personTypeKeysurvey']";
         return driver.findElement(By.xpath(personTypeXpath)).getAttribute("title").toLowerCase();
     }
     public String getConsultant(){
+        consultantXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_consultant']";
         return driver.findElement(By.xpath(consultantXpath)).getAttribute("title").toLowerCase();
     }
     public String getSurveyComplitionDate(){
+        surveyCompletionDateXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_surveyCompletionDate']";
         return driver.findElement(By.xpath(surveyCompletionDateXpath)).getAttribute("title");
     }
     public String getAlertType(){
+        alertTypeXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_alertType']";
         return driver.findElement(By.xpath(alertTypeXpath)).getAttribute("title").toLowerCase();
     }
     public String getStatus(){
+        statusXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_status']";
         return driver.findElement(By.xpath(statusXpath)).getAttribute("title").toLowerCase();
     }
     public String getAlertDueDate(){
+        alertDueDateXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_alertDueDate']";
         return driver.findElement(By.xpath(alertDueDateXpath)).getAttribute("title");
     }
     public String getLastModifyDate(){
+        lastModifyDateXpath = "//tr[@id='"+alertID+"']/td[@aria-describedby='entitiesList_lastModifyDate']";
         return driver.findElement(By.xpath(lastModifyDateXpath)).getAttribute("title");
     }
 
     public void searchAlert(){
+//        driver.navigate().refresh();
+        waitForAJAXfinished();
         filterNameField.clear();
         filterNameField.sendKeys(CSVOperations.getCellFromAutofillCSVFile(3));
         new Select(filterAlertStatus).selectByValue("");

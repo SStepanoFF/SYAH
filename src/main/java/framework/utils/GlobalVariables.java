@@ -55,5 +55,12 @@ public class GlobalVariables {
         Loader.updateProperty("alertStatus",alertStatus);
     }
 
+    private static String AlertID;
+    public static String getAlertID(){
+        return AlertID;
+    }
+    public static void setAlertID(String alertID){
+        AlertID=alertID;
+    }
 
 }

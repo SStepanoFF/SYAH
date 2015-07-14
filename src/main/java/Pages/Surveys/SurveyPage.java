@@ -45,10 +45,14 @@ public class SurveyPage extends DriverOperations {
     private WebElement nameField_Q9;
     @FindBy (css = "input[title='Telephone Number']")
     private WebElement telNumbField_Q9;
-    @FindBy (id = "AnswerLabel20400753_102209403")
-    private WebElement yesAnswer_Q10_Q11;
-    @FindBy (id = "AnswerElementTd20400753_102209404")
-    private WebElement noAnswer_Q10_Q11;
+    @FindBy (xpath = "//label[contains(text(),'Yes, I have an additional vacancy')]")
+    private WebElement yesAnswer_Q10;
+    @FindBy (xpath = "//label[contains(text(),'No, I do not have any additional vacancies at the moment')]")
+    private WebElement noAnswer_Q10;
+    @FindBy (xpath = "//label[contains(text(),'Yes, I would like to refer someone to Hays')]")
+    private WebElement yesAnswer_Q11;
+    @FindBy (xpath = "//label[contains(text(),'No, I do not know anyone I could refer to Hays at this time')]")
+    private WebElement noAnswer_Q11;
     @FindBy (id = "goSubmitPage")
     private WebElement submitSurveyBtn;
 
@@ -141,11 +145,11 @@ public class SurveyPage extends DriverOperations {
             if (numberOfAnswer_Q6 <= 6) {
                 if (fill_Q9_Q10_Q11) {
                     fillAnswer_Q9();
-                    setAlertTypeAndStatus("call-back request");
+                    setAlertTypeAndStatus("call back request");
                 }else {
                     if (personType.contains("candidate")) {
                         GlobalVariables.setAlertType("candidate survey answer");
-                        GlobalVariables.setAlertStatus("close");
+                        GlobalVariables.setAlertStatus("closed");
                     } else {
                         GlobalVariables.setAlertType("client low HPI score");
                         GlobalVariables.setAlertStatus("open");
@@ -153,26 +157,25 @@ public class SurveyPage extends DriverOperations {
                 }
             }else {
                 if (fill_Q9_Q10_Q11){   //  Do you know anyone who could use our services?
-                    yesAnswer_Q10_Q11.click();
                     if (personType.contains("candidate")) {
+                        yesAnswer_Q11.click();
                         setAlertTypeAndStatus("referral");
                     } else {
+                        yesAnswer_Q10.click();
                         GlobalVariables.setAlertType("business development");
                         GlobalVariables.setAlertStatus("open");
                     }
                 }else {
-                    noAnswer_Q10_Q11.click();
+                    if (personType.contains("candidate")) {
+                        noAnswer_Q11.click();
+                    }else noAnswer_Q10.click();
                     setAlertTypeAndStatus("survey answer");
                 }
             }
         }
         GlobalVariables.setRespondentID(respondID.getAttribute("value"));
         submitSurveyBtn.click();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitForAlertCreatedInDB();
     }
 
     public void getCompleteSurveyInformation(){
