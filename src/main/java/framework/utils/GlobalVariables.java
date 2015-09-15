@@ -2,11 +2,11 @@ package framework.utils;
 
 public class GlobalVariables {
 
-    public static int GlobalTimeOut=Integer.parseInt(Loader.loadProperty("timeout"));
-    public static String DownloadExcelFilePath =System.getProperty("user.home") + "\\Downloads\\ContactsOfGroup-Excel.xls";
-    public static String AutofillCSVFilePath =System.getProperty("user.dir")+"\\src\\main\\resources\\HAYSAutofill.csv";
+    public static final int GlobalTimeOut=Integer.parseInt(Loader.loadProperty("timeout"));
+    public static final String DownloadExcelFilePath =System.getProperty("user.home") + "\\Downloads\\ContactsOfGroup-Excel.xls";
+    public static final String AutofillCSVFilePath =System.getProperty("user.dir")+"\\src\\main\\resources\\HAYSAutofill.csv";
 
-    public static String PortalUrl= Loader.loadProperty("portalUrl");
+    public static final String PortalUrl= Loader.loadProperty("portalUrl");
     public static String getPortalLogin(){
         return Loader.loadProperty("portalLogin");
     }

@@ -2,9 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="HAYS Tests" verbose="1"  >
 
-    <!--1. Crate copy of survey (Change DataSender url (plugin)). Set SID at configure file-->
+    <!--1. Crate copy of survey (Change DataSender url (plugin)). Set SID at configure file.-->
     <!--2. Create (CommonOperationTest)  and autofill contacts file.-->
-    <!--3. Run test suite.-->
+    <!--3. Launch survey.-->
+    <!--4. Run test suite.-->
 
     <test name="KS make setup" preserve-order="true" enabled="true">
         <classes>

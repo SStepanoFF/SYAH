@@ -5,9 +5,12 @@ import KS_API_FormResultManagementService.WSRespondent;
 import Pages.KS.KSLoginPage;
 import Pages.KS.KSMainPage;
 import Pages.KS.KSManageResponsePage;
+import Pages.Portal.AlertTabPage;
+import com.google.common.hash.HashCode;
 import framework.CommonOperations;
 import framework.DriverOperations;
 import framework.utils.CSVOperations;
+import framework.utils.DataBase;
 import framework.utils.GlobalVariables;
 import framework.webDriver.Driver;
 import org.apache.axis.client.Stub;
@@ -24,10 +27,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.StringTokenizer;
+import java.util.*;
 
 /**
 * Created by sergii.stepanov on 20.01.2015.
@@ -35,12 +35,35 @@ import java.util.StringTokenizer;
 public class test extends CommonOperations{
 
     public static void main(String []args) throws Exception {
-        WebDriver driver=Driver.getInstance();
-        driver.navigate().to(GlobalVariables.KSUrl);
-        DriverOperations.createNewWindow(driver, "http://link2");
-        DriverOperations.switchWindow(driver,0);
-        driver.navigate().to("http://link3");
-//        DriverOperations.switchTab(driver);
+        Map<Integer, HashCode> map = new HashMap<Integer, HashCode>();
+        for (Integer i = 15; i > 0; i--) {
+            map.put(i, HashCode.fromInt(i.hashCode()));
+        }
+        Iterator<Integer> iterator=map.keySet().iterator();
+        while (iterator.hasNext()){
+            if(iterator.next()<5){
+                iterator.remove();
+            }
+        }
+
+        Set<Map.Entry<Integer,HashCode>> entrySet= map.entrySet();
+        for (Map.Entry<Integer,HashCode> mapEl:entrySet){
+            mapEl.getKey();
+            }
+        
+        System.out.println("Map: "+map);
+
+        Collection<Integer> collection2 = new ArrayList<Integer>();
+        for (Integer i = 10; i > 0; i--) {
+            collection2.add(i);
+        }
+        map.remove(7);
+        Iterator<Integer> iterator2=collection2.iterator();
+        while (iterator.hasNext()){
+            if (iterator.next()<5){
+                iterator.remove();
+            }
+        }
     }
 
 }

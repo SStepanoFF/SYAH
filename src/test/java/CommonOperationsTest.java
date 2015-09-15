@@ -4,6 +4,8 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import setup.BaseTest;
 
+import java.util.*;
+
 /**
  * Created by sergii.stepanov on 13/07/2015.
  */

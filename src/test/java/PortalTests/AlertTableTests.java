@@ -78,7 +78,7 @@ public class AlertTableTests extends BaseTest {
     private void surveyCompleteVerificationTest(){
 //        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH");
 //        Date date = new Date();
-        Assert.assertEquals(alertTabPage.getSurveyComplitionDate(), DataBase.executeSQLQuery("Select SURVEY_COMPLETION_DATE from ALERT where ALERT_ID= " + alertTabPage.getAlertID(), "SURVEY_COMPLETION_DATE"));  //
+        Assert.assertEquals(alertTabPage.getSurveyComplitionDate(), DataBase.getInstance().executeSQLQuery("Select SURVEY_COMPLETION_DATE from ALERT where ALERT_ID= " + alertTabPage.getAlertID(), "SURVEY_COMPLETION_DATE"));  //
     }
 
     @Test (priority = 9)
@@ -94,12 +94,12 @@ public class AlertTableTests extends BaseTest {
 
     @Test (priority = 11)
     private void alertDueDateVerificationTest(){
-        Assert.assertEquals(alertTabPage.getAlertDueDate(), DataBase.executeSQLQuery("Select ALERT_DUE_DATE from ALERT where ALERT_ID= " + alertTabPage.getAlertID(), "ALERT_DUE_DATE"));  //contains(dateFormat.format(date))
+        Assert.assertEquals(alertTabPage.getAlertDueDate(), DataBase.getInstance().executeSQLQuery("Select ALERT_DUE_DATE from ALERT where ALERT_ID= " + alertTabPage.getAlertID(), "ALERT_DUE_DATE"));  //contains(dateFormat.format(date))
     }
 
     @Test (priority = 12)
     private void alertModifiedDateVerificationTest(){
-        Assert.assertEquals(alertTabPage.getLastModifyDate(), DataBase.executeSQLQuery("Select LAST_MODIFY_DATE from ALERT where ALERT_ID= " + alertTabPage.getAlertID(), "LAST_MODIFY_DATE"));  //contains(dateFormat.format(date))
+        Assert.assertEquals(alertTabPage.getLastModifyDate(), DataBase.getInstance().executeSQLQuery("Select LAST_MODIFY_DATE from ALERT where ALERT_ID= " + alertTabPage.getAlertID(), "LAST_MODIFY_DATE"));  //contains(dateFormat.format(date))
     }
 
     @AfterClass

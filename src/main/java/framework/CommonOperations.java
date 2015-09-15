@@ -19,9 +19,7 @@ import java.util.regex.Pattern;
 /**
  * Created by sergii.stepanov on 08/05/2015.
  */
-public class CommonOperations {
-
-    private DataBase dataBase;
+public abstract class CommonOperations {
 
     public String parsTextByRegEx(String text, String regExpr) {
         String result = "";
@@ -48,7 +46,7 @@ public class CommonOperations {
         int time=0;
         while (time<20){
             try {
-                res=DataBase.executeSQLQuery("SELECT ALERT_ID FROM ALERT JOIN RESPONSE ON ALERT.RESPONSE_ID=RESPONSE.RESPONSE_ID WHERE  KS_RESPONDENT_ID= " + GlobalVariables.getRespondentID(), "ALERT_ID");
+                res=DataBase.getInstance().executeSQLQuery("SELECT ALERT_ID FROM ALERT JOIN RESPONSE ON ALERT.RESPONSE_ID=RESPONSE.RESPONSE_ID WHERE  KS_RESPONDENT_ID= " + GlobalVariables.getRespondentID(), "ALERT_ID");
                 break;
             }catch (RuntimeException ex){
                 try {
