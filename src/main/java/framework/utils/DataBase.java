@@ -27,7 +27,7 @@ public class DataBase {
         try {
             Class.forName("com.mysql.jdbc.Driver");//Регистрируем драйвер
             conn = DriverManager.getConnection("jdbc:mysql://mysql-kstest2.t1.tenet:3306/hays_ssstest_com_PRR_2032",
-                    "member", "1234");//Установка соединения с БД
+                    Loader.loadProperty("login"), Loader.loadProperty("pass"));//Установка соединения с БД
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
